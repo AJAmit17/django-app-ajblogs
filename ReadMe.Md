@@ -22,33 +22,28 @@ To run the AJ-Blogs application locally, follow these steps:
    `git clone <repository-url>`
    
    
-2. Navigate to the project directory:
-   
-   `cd blog`
-   
-   
-3. Create a virtual environment and activate it:
+2. Create a virtual environment and activate it:
    
    `python3 -m venv myenv`
    `source myenv/bin/activate`
    
    
-4. Install the required dependencies:
+3. Install the required dependencies:
    
    `pip install -r requirements.txt`
    
    
-5. Apply the database migrations:
+4. Apply the database migrations:
    
    `python manage.py migrate`
    
    
-6. Start the development server:
+5. Start the development server:
    
    `python manage.py runserver`
    
    
-7. Open your web browser and access the application at `http://localhost:8000`.
+6. Open your web browser and access the application at `http://localhost:8000`.
 
 ## Features <a name="features"></a>
 
