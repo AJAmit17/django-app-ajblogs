@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if title %}
+        <title>Django blog - {{ title }}</title>
+    {% else %}
+        <title>No Title found</title>
+    {% endif %}
+    <script src=https://cdn.tailwindcss.com></script>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex flex-col min-h-screen">
+    <!--navbar block-->
+    <nav class="bg-sky-100 shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between py-4">
+                <a href="{% url 'blog-home' %}" class="text-2xl font-bold text-gray-800">My Blog</a>
+                <ul class="flex space-x-4">
+                    <li><a href="{% url 'blog-home' %}" class="text-gray-600 hover:text-gray-800 transition duration-300 ease-in-out">Home</a></li>
+                    <li><a href="{% url 'blog-about' %}" class="text-gray-600 hover:text-gray-800 transition duration-300 ease-in-out">About</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'post-create' %}" class="text-gray-600 hover:text-gray-800 transition duration-300 ease-in-out">New Post</a></li>
+                    <li><a href="{% url 'blog-profile' %}" class="text-gray-600 hover:text-gray-800 transition duration-300 ease-in-out">Profile</a></li>
+                    <li><a href="{% url 'logout' %}" class="text-gray-600 hover:text-gray-800 transition duration-300 ease-in-out">Logout</a></li>
+                    {% else %}
+                    <li><a href="{% url 'login' %}" class="text-gray-600 hover:text-gray-800 transition duration-300 ease-in-out">Login</a></li>
+                    <li><a href="{% url 'blog-register' %}" class="text-gray-600 hover:text-gray-800 transition duration-300 ease-in-out">Register</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mx-auto my-2 px-4 flex-grow">
+        <!--message block-->
+        {% if messages %}
+        <div class="bg-green-500 rounded-lg text-white p-4">
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+
+        <!--main base block-->
+        {% block content %}
+        {% endblock %}
+
+    </div>
+    <footer class="bg-gray-900 text-gray-300 mt-8 px-5">
+        <div class="container mx-auto py-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="footer-section">
+              <h3 class="text-lg font-semibold mb-4">About</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet.</p>
+            </div>
+            <div class="footer-section">
+              <h3 class="text-lg font-semibold mb-4">Categories</h3>
+              <ul>
+                <li><a href="#" class="hover:text-gray-400">Technology</a></li>
+                <li><a href="#" class="hover:text-gray-400">Travel</a></li>
+                <li><a href="#" class="hover:text-gray-400">Food</a></li>
+                <li><a href="#" class="hover:text-gray-400">Fashion</a></li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h3 class="text-lg font-semibold mb-4">Social</h3>
+              <ul>
+                <li><a href="https://twitter.com/Amit10225527" class="hover:text-gray-400" target="_blank">Twitter</a></li>
+                <li><a href="https://www.facebook.com/amit.achari.3150/" class="hover:text-gray-400" target="_blank">Facebook</a></li>
+                <li><a href="https://www.instagram.com/ajamit_17/" class="hover:text-gray-400" target="_blank">Instagram</a></li>
+                <li><a href="https://www.linkedin.com/in/amit-acharya17/" class="hover:text-gray-400" target="_blank">LinkedIn</a></li>
+              </ul>
+            </div>
+            <div class="footer-section">
+              <h3 class="text-lg font-semibold mb-4">Contact</h3>
+              <p>Email: amitjagadeesh2004@gmail.com</p>
+              <p>Phone: +91 6361870184</p>
+            </div>
+          </div>
+          <hr class="my-6 border-gray-700">
+          <div class="flex justify-between items-center">
+            <p>&copy; 2023 AJ-Blogs Application. All rights reserved.</p>
+            <ul class="flex space-x-4">
+              <li><a href="#" class="hover:text-gray-400">Terms</a></li>
+              <li><a href="#" class="hover:text-gray-400">Privacy Policy</a></li>
+            </ul>
+          </div>
+        </div>
+    </footer>
+</body>
+</html>

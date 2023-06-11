@@ -1,0 +1,32 @@
+{% extends 'blogApp/base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="bg-white rounded-lg shadow-lg p-6">
+    <form method="POST">
+        {% csrf_token %}
+        <fieldset class="mb-4 p-4 shadow-xl">
+            <h1 class="border-b border-gray-300 pb-4 mb-4 text-xl font-semibold">Blog Post</h1>
+            <div class="mb-4">
+                <label for="{{ form.title.id_for_label }}" class="block text-gray-700 text-sm font-bold mb-2">
+                    {{ form.title.label }}
+                </label>
+                <div class="shadow-xl">
+                    {{ form.title|add_class:'w-full border border-gray-600 p-2 rounded'}}
+                </div>
+            </div>
+            <div class="mb-4">
+                <label for="{{ form.content.id_for_label }}" class="block text-gray-700 text-sm font-bold mb-2">
+                    {{ form.content.label }}
+                </label>
+                <div class="shadow-xl">
+                    {{ form.content|add_class:'w-full border border-gray-600 p-2 rounded'}}
+                </div>
+            </div>
+        </fieldset>
+        <div class="mb-4">
+            <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded" type="submit">Post</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

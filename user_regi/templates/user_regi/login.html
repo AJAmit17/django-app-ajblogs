@@ -1,0 +1,36 @@
+{% extends 'blogApp/base.html' %}
+{% load widget_tweaks %}
+
+{% block content %}
+<div class="max-w-md mx-auto mt-8">
+    <h2 class="text-2xl font-bold text-center mb-4">Login</h2>
+    <form method="POST" action="#">
+      {% csrf_token %}
+      <div class="m-2 p-3 flex flex-row shadow-xl rounded-xl ">
+        <label for="{{ form.username.id_for_label }}" class="inline-block text-gray-700 flex flex-row item-center justify-center text-sm font-bold mb-2 w-1/3 px-2">Username:</label>
+        <div class="inline-block w-2/3 px-3">
+          {%render_field form.username class="appearence-none block w-full bg-gray-lighter text-gray-darker border border-gray-400 rounded h-8 py-3 px-4" %}
+        </div>
+      </div>
+      <div class="m-2 p-3 flex flex-row shadow-xl rounded-xl ">
+        <label for="{{ form.password1.id_for_label }}" class="inline-block text-gray-700 flex flex-row item-center justify-center text-sm font-bold mb-2 w-1/3 px-2">Password:</label>
+        <div class="inline-block w-2/3 px-3">
+          {%render_field form.password class="appearence-none block w-full bg-gray-lighter text-gray-darker border border-gray-400 rounded h-8 py-3 px-4" %}
+        </div>
+      </div>
+      <div class="flex justify-center">
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+          Login
+        </button>
+      </div>
+    </form>
+    <div class="border-t border-gray-300 mt-3 pt-3">
+      <small class="text-gray-500 mx-5">
+          Forgot Password?<a class="ml-2 text-blue-500 hover:text-blue-600" href="{% url 'password_reset' %}">Reset here</a>
+      </small>
+      <small class="text-gray-500 mx-5">
+        Need an account?<a class="ml-2 text-blue-500 hover:text-blue-600" href="{% url 'blog-register' %}">Register</a>
+      </small>
+    </div>
+  </div>
+{% endblock %}
