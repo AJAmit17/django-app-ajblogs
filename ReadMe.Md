@@ -105,4 +105,4 @@ Thank you for considering contributing to the AJ-Blogs project! If you'd like to
 5. Submit a pull request with a clear description of your changes.
 
 ## License <a name="license"></a>
-The AJ-Blogs project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+All Rights are reserved by [Amit Acharya](https://github.com/AJAmit17)
